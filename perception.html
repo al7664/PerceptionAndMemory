@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perception</title>
+  <link rel="stylesheet" href="pagesstyle.css">
+  
+</head>
+<body>
+  <h1>PERCEPTION</h1>
+
+  <div class="content-wrapper">
+
+    <div class="instruction-box">
+      <h2>How to Play</h2>
+      <p><strong>You can watch the video and put the puzzle together at the same time.</strong></p>
+      <ol>
+        <li>Press the blue play button and watch the video while putting the puzzle together.</li>
+        <li>Feel free to press the blue play button again to rewatch.</li>
+        <li>Press “Finished” when you complete the puzzle.</li>
+      </ol>
+      <p><strong>Timer:</strong> <span id="timer">0:00</span></p>
+    </div>
+    
+  
+    <div class="video-column">
+      <video id="perceptionVideo" src="assets/PerceptionPCSR.mp4" preload="metadata"></video>
+      <div class="button-row">
+        <button class="button play-button" onclick="toggleVideo()">Play</button>
+        <button class="button finish-button" onclick="stopTimer()">Finished</button>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    const video = document.getElementById("perceptionVideo");
+    const timerDisplay = document.getElementById("timer");
+  
+    let timerStarted = false;
+    let timerInterval;
+    let secondsElapsed = 0;
+  
+    window.addEventListener("keydown", e => e.preventDefault());
+    video.addEventListener("click", e => e.preventDefault());
+  
+    function toggleVideo() {
+      if (video.paused) {
+        video.play();
+  
+        if (!timerStarted) {
+          resetTimer();
+          startTimer();
+          timerStarted = true;
+        }
+      } else {
+        video.pause();
+      }
+    }
+  
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        secondsElapsed++;
+        const minutes = Math.floor(secondsElapsed / 60);
+        const seconds = secondsElapsed % 60;
+        timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      }, 1000);
+    }
+  
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerStarted = false;
+  
+      // ⏹️ Reset video
+      video.pause();
+      video.currentTime = 0;
+  
+      // Optional: also reset timer text if desired
+      // resetTimer(); // uncomment if you want to reset timer visually too
+    }
+  
+    function resetTimer() {
+      clearInterval(timerInterval);
+      secondsElapsed = 0;
+      timerDisplay.textContent = `0:00`;
+    }
+  </script>  
+
+  <div class="return-link">
+    <a href="index.html">← Return to Home</a>
+  </div>
+
+</body>
+</html>
