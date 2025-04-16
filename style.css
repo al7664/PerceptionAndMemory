@@ -1,0 +1,56 @@
+body {
+  background-color: #f2f2f2;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.center-wrapper {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 4em;
+  margin-bottom: 60px;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.nav-link {
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 10px 30px;
+  border: 2px solid;
+  transition: all 0.3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.perception-btn {
+  color: #007BFF;
+  border-color: #007BFF;
+}
+
+.perception-btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.memory-btn {
+  color: #CC0000;
+  border-color: #CC0000;
+}
+
+.memory-btn:hover {
+  background-color: #CC0000;
+  color: white;
+}
